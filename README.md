@@ -25,7 +25,7 @@ The repository is organized as follows:
 | 1   | [Link to Puzzle](day01/trebuchet.py) | :star: :star: |
 | 2   | [Link to Puzzle](day02/cube-conundrum.py) | :star: :star: |
 
-_(:star: indicates each part of the puzzle solved)_
+_( :star: indicates each part of the puzzle solved )_
 
 ## Running the Solutions
 
