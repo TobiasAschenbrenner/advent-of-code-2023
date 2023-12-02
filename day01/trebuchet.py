@@ -11,19 +11,15 @@ total_sum = 0
 
 def extract_numbers(line):
     numbers = []
-    i = 0
-    while i < len(line):
-        longest_match = ''
-        for length in range(5, 0, -1):
-            if i + length <= len(line):
-                word = line[i:i + length].lower()
-                if word in word_to_digit and len(word) > len(longest_match):
-                    longest_match = word_to_digit[word]
-        if longest_match:
-            numbers.append(int(longest_match))
-        elif line[i].isdigit():
-            numbers.append(int(line[i]))
-        i += 1
+    
+    pattern = r'\b(?:' + '|'.join(re.escape(word) for word in word_to_digit) + r')\b|\d'
+    
+    for match in re.finditer(pattern, line, flags=re.IGNORECASE):
+        if match.group().lower() in word_to_digit:
+            numbers.append(int(word_to_digit[match.group().lower()]))
+        else:
+            numbers.append(int(match.group()))
+    
     return numbers
 
 with open(file_path, 'r') as file:
